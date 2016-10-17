@@ -126,11 +126,11 @@ static const uint8_t REG_WRITE32 = 0x5;
 static const uint8_t REG_WRITE64 = 0x6;
 static const uint8_t REG_WRITE128 = 0x7;
 
-static const uint16_t modules_max_id = 7;
+static const uint16_t modules_max_id = 8;
 struct module_types {
     const char *name;
 };
-extern const struct module_types module_lookup[7];
+extern const struct module_types module_lookup[8];
 
 struct module_callback {
     osd_incoming_handler call;
