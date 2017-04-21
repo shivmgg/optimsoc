@@ -259,6 +259,4 @@ module wb2sram(/*AUTOARG*/
 
    assign wb_err_o = wb_ack & wb_stb_i & (burst_access_wrong_wb_adr);
 
-   `include "optimsoc_functions.vh"
-
 endmodule

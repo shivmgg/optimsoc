@@ -70,7 +70,7 @@
          $stop;
       end
 
-      if ((1 << clog2(SW)) != SW) begin
+      if ((1 << $clog2(SW)) != SW) begin
          $display("sram_sp: the byte select width (paramter SW = DW/8) must be a power of two");
          $stop;
       end
@@ -139,7 +139,5 @@
 //         $stop;
       end
    endgenerate
-
-`include "optimsoc_functions.vh"
 
  endmodule
