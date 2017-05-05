@@ -66,18 +66,18 @@
           xsi:type="setup.p2:P2Task"
           label="${scope.product.label} (${scope.product.version.label})"
           licenseConfirmationDisabled="true">
+        <repository
+            url="http://download.eclipse.org/releases/neon"/>
+
+        <!-- base IDE -->
         <requirement
             name="org.eclipse.platform.ide"/>
         <requirement
             name="org.eclipse.platform.feature.group"/>
         <requirement
             name="org.eclipse.rcp.feature.group"/>
-        <requirement
-            name="org.python.pydev.feature.feature.group"
-            filter=""/>
-        <requirement
-            name="net.sf.sveditor.feature.group"
-            filter=""/>
+
+        <!-- C/C++ (CDT and friends) -->
         <requirement
             name="epp.package.cpp"
             versionRange="[4.6.0,4.7.0)"/>
@@ -99,16 +99,38 @@
             name="org.eclipse.linuxtools.cdt.libhover.feature.feature.group"/>
         <requirement
             name="org.eclipse.linuxtools.changelog.c.feature.group"/>
+
+        <!-- TCL -->
         <requirement
             name="org.eclipse.dltk.core.feature.group"/>
         <requirement
             name="org.eclipse.dltk.tcl.feature.group"/>
-        <repository
-            url="http://download.eclipse.org/releases/neon"/>
+
+        <!-- Python -->
         <repository
             url="http://www.pydev.org/updates"/>
+        <requirement
+            name="org.python.pydev.feature.feature.group"
+            filter=""/>
+
+        <!-- SystemVerilog support (SVEditor) -->
         <repository
             url="http://sveditor.sourceforge.net/update"/>
+        <requirement
+            name="net.sf.sveditor.feature.group"
+            filter=""/>
+
+        <!-- ReST editor (to edit documentation)-->
+        <repository
+            url="http://resteditor.sourceforge.net/eclipse"/>
+        <requirement
+            name="org.psem2m.eclipse.rest.editor.feature.group"/>
+
+        <!-- yedit (YAML editor) -->
+        <requirement
+            name="org.dadacoalition.yedit.feature.feature.group"/>
+        <repository
+            url="http://dadacoalition.org/yedit"/>
       </setupTask>
       <description>OpTiMSoC Development Environment based on Eclipse Neon</description>
     </version>
