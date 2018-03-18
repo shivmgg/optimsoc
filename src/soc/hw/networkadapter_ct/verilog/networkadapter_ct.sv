@@ -41,13 +41,6 @@ module networkadapter_ct
     localparam FLIT_WIDTH = CONFIG.NOC_FLIT_WIDTH
     )
    (
-`ifdef OPTIMSOC_CLOCKDOMAINS
- `ifdef OPTIMSOC_CDC_DYNAMIC
-    output [2:0]          cdc_conf,
-    output                cdc_enable,
- `endif
-`endif
-
     input                                 clk, rst,
 
     input [CHANNELS-1:0][FLIT_WIDTH-1:0]  noc_in_flit,
@@ -187,7 +180,8 @@ module networkadapter_ct
           .clk                          (clk),
           .rst                          (rst),
           .adr                          (wbs_adr_i[15:0]),
-          .we                           (wbs_cyc_i & wbs_stb_i & wbs_we_i),
+          .en                           (wbif_cyc_i[ID_CONF] & wbif_stb_i[ID_CONF]),
+          .we                           (wbif_we_i[ID_CONF]),
           .data_i                       (wbif_dat_i[ID_CONF*32 +: 32]));
 
 
@@ -297,7 +291,7 @@ module networkadapter_ct
    endgenerate
 
    wire [1:0][FLIT_WIDTH-1:0] muxed_flit;
-   wire [1:0] 		      muxed_last, muxed_valid, muxed_ready;
+   wire [1:0]                 muxed_last, muxed_valid, muxed_ready;
 
    noc_mux
      #(.FLIT_WIDTH(FLIT_WIDTH), .CHANNELS(2))
@@ -356,7 +350,7 @@ module networkadapter_ct
       );
 
    wire [1:0][FLIT_WIDTH-1:0] inbuffer_flit;
-   wire [1:0] 		      inbuffer_last, inbuffer_valid, inbuffer_ready;
+   wire [1:0]                 inbuffer_last, inbuffer_valid, inbuffer_ready;
 
    noc_buffer
      #(.FLIT_WIDTH(FLIT_WIDTH), .DEPTH(4))

@@ -34,8 +34,8 @@ module system_allct
      parameter YDIM = 1,
      localparam NODES = XDIM*YDIM)
   (
-   input 		 clk, rst,
-			 
+   input                 clk, rst,
+       
    glip_channel c_glip_in,
    glip_channel c_glip_out,
 
@@ -48,9 +48,9 @@ module system_allct
    output [NODES*1-1:0]  wb_ext_cab_i,
    output [NODES*3-1:0]  wb_ext_cti_i,
    output [NODES*2-1:0]  wb_ext_bte_i,
-   input [NODES*1-1:0] 	 wb_ext_ack_o,
-   input [NODES*1-1:0] 	 wb_ext_rty_o,
-   input [NODES*1-1:0] 	 wb_ext_err_o,
+   input [NODES*1-1:0]   wb_ext_ack_o,
+   input [NODES*1-1:0]   wb_ext_rty_o,
+   input [NODES*1-1:0]   wb_ext_err_o,
    input [NODES*32-1:0]  wb_ext_dat_o
    );
 
@@ -96,9 +96,9 @@ module system_allct
 
    // Flits from tiles->NoC
    wire [NODES-1:0][CHANNELS-1:0][FLIT_WIDTH-1:0] link_out_flit;
-   wire [NODES-1:0][CHANNELS-1:0] 		  link_out_last;
-   wire [NODES-1:0][CHANNELS-1:0] 		  link_out_valid;
-   wire [NODES-1:0][CHANNELS-1:0] 		  link_out_ready;
+   wire [NODES-1:0][CHANNELS-1:0]                 link_out_last;
+   wire [NODES-1:0][CHANNELS-1:0]                 link_out_valid;
+   wire [NODES-1:0][CHANNELS-1:0]                 link_out_ready;
    
    noc_mesh
      #(.FLIT_WIDTH (FLIT_WIDTH), .X (XDIM), .Y (YDIM),
@@ -119,49 +119,49 @@ module system_allct
    generate
       for (i=0; i<NODES; i=i+1) begin : gen_ct
          compute_tile_dm
-	     #(.CONFIG (CONFIG),
+             #(.CONFIG (CONFIG),
                .ID(i),
                .COREBASE(i*CONFIG.CORES_PER_TILE),
                .DEBUG_BASEID((CONFIG.DEBUG_LOCAL_SUBNET << (16 - CONFIG.DEBUG_SUBNET_BITS))
-			     + 1 + (i*CONFIG.DEBUG_MODS_PER_TILE)))
-             u_ct(.clk                        (clk),
-		  .rst_cpu                    (rst_cpu),
-		  .rst_sys                    (rst_sys),
-		  .rst_dbg                    (rst),
-		  .debug_ring_in              (debug_ring_in[i]),
-		  .debug_ring_in_ready        (debug_ring_in_ready[i]),
-		  .debug_ring_out             (debug_ring_out[i]),
-		  .debug_ring_out_ready       (debug_ring_out_ready[i]),
-		  
-		  .wb_ext_ack_o               (wb_ext_ack_o[i]),
-		  .wb_ext_rty_o               (wb_ext_rty_o[i]),
-		  .wb_ext_err_o               (wb_ext_err_o[i]),
-		  .wb_ext_dat_o               (wb_ext_dat_o[(i+1)*32-1:i*32]),
-		  .wb_ext_adr_i               (wb_ext_adr_i[(i+1)*32-1:i*32]),
-		  .wb_ext_cyc_i               (wb_ext_cyc_i[i]),
-		  .wb_ext_dat_i               (wb_ext_dat_i[(i+1)*32-1:i*32]),
-		  .wb_ext_sel_i               (wb_ext_sel_i[(i+1)*4-1:i*4]),
-		  .wb_ext_stb_i               (wb_ext_stb_i[i]),
-		  .wb_ext_we_i                (wb_ext_we_i[i]),
-		  .wb_ext_cab_i               (wb_ext_cab_i[i]),
-		  .wb_ext_cti_i               (wb_ext_cti_i[(i+1)*3-1:i*3]),
-		  .wb_ext_bte_i               (wb_ext_bte_i[(i+1)*2-1:i*2]),
-		  
-		  .noc_in_ready               (link_in_ready[i]),
-		  .noc_out_flit               (link_out_flit[i]),
-		  .noc_out_last               (link_out_last[i]),
-		  .noc_out_valid              (link_out_valid[i]),
-		  
-		  .noc_in_flit                (link_in_flit[i]),
-		  .noc_in_last                (link_in_last[i]),
-		  .noc_in_valid               (link_in_valid[i]),
-		  .noc_out_ready              (link_out_ready[i]));
-	 
-	 // TODO We are routing the debug in a meander
-	 if (i > 0) begin
+                             + 1 + (i*CONFIG.DEBUG_MODS_PER_TILE)))
+         u_ct(.clk                        (clk),
+              .rst_cpu                    (rst_cpu),
+              .rst_sys                    (rst_sys),
+              .rst_dbg                    (rst),
+              .debug_ring_in              (debug_ring_in[i]),
+              .debug_ring_in_ready        (debug_ring_in_ready[i]),
+              .debug_ring_out             (debug_ring_out[i]),
+              .debug_ring_out_ready       (debug_ring_out_ready[i]),
+              
+              .wb_ext_ack_o               (wb_ext_ack_o[i]),
+              .wb_ext_rty_o               (wb_ext_rty_o[i]),
+              .wb_ext_err_o               (wb_ext_err_o[i]),
+              .wb_ext_dat_o               (wb_ext_dat_o[(i+1)*32-1:i*32]),
+              .wb_ext_adr_i               (wb_ext_adr_i[(i+1)*32-1:i*32]),
+              .wb_ext_cyc_i               (wb_ext_cyc_i[i]),
+              .wb_ext_dat_i               (wb_ext_dat_i[(i+1)*32-1:i*32]),
+              .wb_ext_sel_i               (wb_ext_sel_i[(i+1)*4-1:i*4]),
+              .wb_ext_stb_i               (wb_ext_stb_i[i]),
+              .wb_ext_we_i                (wb_ext_we_i[i]),
+              .wb_ext_cab_i               (wb_ext_cab_i[i]),
+              .wb_ext_cti_i               (wb_ext_cti_i[(i+1)*3-1:i*3]),
+              .wb_ext_bte_i               (wb_ext_bte_i[(i+1)*2-1:i*2]),
+      
+              .noc_in_ready               (link_in_ready[i]),
+              .noc_out_flit               (link_out_flit[i]),
+              .noc_out_last               (link_out_last[i]),
+              .noc_out_valid              (link_out_valid[i]),
+              
+              .noc_in_flit                (link_in_flit[i]),
+              .noc_in_last                (link_in_last[i]),
+              .noc_in_valid               (link_in_valid[i]),
+              .noc_out_ready              (link_out_ready[i]));
+         
+         // TODO We are routing the debug in a meander
+         if (i > 0) begin
             assign debug_ring_in[i] = debug_ring_out[i-1];
             assign debug_ring_out_ready[i-1] = debug_ring_in_ready[i];
-	 end
+         end
       end   
    endgenerate
    
