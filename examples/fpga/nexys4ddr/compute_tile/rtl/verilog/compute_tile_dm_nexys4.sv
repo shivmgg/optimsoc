@@ -27,10 +27,9 @@
  *   Philipp Wagner <philipp.wagner@tum.de>
  */
 
-import dii_package::dii_flit;
-import optimsoc::*;
-
 module compute_tile_dm_nexys4
+  import dii_package::dii_flit;
+  import optimsoc::*;
   (
    // 100 MHz system clock from board
    input                 clk,

@@ -26,12 +26,10 @@
  *   Philipp Wagner <philipp.wagner@tum.de>
  */
 
-import dii_package::dii_flit;
-import optimsoc::*;
-
 module compute_tile_dm_vcu108
+  import dii_package::dii_flit;
+  import optimsoc::*;
   (
-
    // 300 MHz system clock
    input                 sysclk1_300_p,
    input                 sysclk1_300_n,

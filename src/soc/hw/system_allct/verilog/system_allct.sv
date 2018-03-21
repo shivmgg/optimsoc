@@ -35,7 +35,7 @@ module system_allct
      localparam NODES = XDIM*YDIM)
   (
    input                 clk, rst,
-       
+
    glip_channel c_glip_in,
    glip_channel c_glip_out,
 
@@ -146,7 +146,7 @@ module system_allct
               .wb_ext_cab_i               (wb_ext_cab_i[i]),
               .wb_ext_cti_i               (wb_ext_cti_i[(i+1)*3-1:i*3]),
               .wb_ext_bte_i               (wb_ext_bte_i[(i+1)*2-1:i*2]),
-      
+
               .noc_in_ready               (link_in_ready[i]),
               .noc_out_flit               (link_out_flit[i]),
               .noc_out_last               (link_out_last[i]),
