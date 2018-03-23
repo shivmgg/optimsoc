@@ -1,4 +1,4 @@
-/* Copyright (c) 2016 by the author(s)
+/* Copyright (c) 2016-2018 by the author(s)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,14 +23,13 @@
  * Toplevel: compute_tile_dm on a Nexys 4 DDR board
  *
  * Author(s):
- *   Stefan Wallentowitz <stefan.wallentowitz@tum.de>
+ *   Stefan Wallentowitz <stefan@wallentowitz.de>
  *   Philipp Wagner <philipp.wagner@tum.de>
  */
 
-import dii_package::dii_flit;
-import optimsoc::*;
-
 module compute_tile_dm_nexys4
+  import dii_package::dii_flit;
+  import optimsoc::*;
   (
    // 100 MHz system clock from board
    input                 clk,
@@ -70,7 +69,7 @@ module compute_tile_dm_nexys4
    localparam base_config_t
      BASE_CONFIG = '{ NUMTILES: 1,
                       NUMCTS: 1,
-                      CTLIST: {{63{16'hx}}, 16'h0},
+                      CTLIST: 1024'h1,
                       CORES_PER_TILE: NUM_CORES,
                       GMEM_SIZE: 0,
                       GMEM_TILE: 'x,

@@ -26,12 +26,10 @@
  *   Philipp Wagner <philipp.wagner@tum.de>
  */
 
-import dii_package::dii_flit;
-import optimsoc::*;
-
 module compute_tile_dm_vcu108
+  import dii_package::dii_flit;
+  import optimsoc::*;
   (
-
    // 300 MHz system clock
    input                 sysclk1_300_p,
    input                 sysclk1_300_n,
@@ -114,7 +112,7 @@ module compute_tile_dm_vcu108
    localparam base_config_t
      BASE_CONFIG = '{ NUMTILES: 1,
                       NUMCTS: 1,
-                      CTLIST: {{63{16'hx}}, 16'h0},
+                      CTLIST: 1024'h1,
                       CORES_PER_TILE: NUM_CORES,
                       GMEM_SIZE: 0,
                       GMEM_TILE: 'x,

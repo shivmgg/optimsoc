@@ -52,7 +52,7 @@ package optimsoc;
       // System configuration
       integer            NUMTILES;
       integer            NUMCTS;
-      logic [63:0][15:0] CTLIST;
+      logic [1023:0]     CTLIST;
       integer            CORES_PER_TILE;
       integer            GMEM_SIZE;
       integer            GMEM_TILE;
@@ -100,7 +100,7 @@ package optimsoc;
       integer            TOTAL_NUM_CORES;
 
       // NoC-related configuration
-      logic 		       NOC_ENABLE_VCHANNELS;
+      logic              NOC_ENABLE_VCHANNELS;
       //  -> derived
       integer            NOC_FLIT_WIDTH;
       integer            NOC_CHANNELS;
