@@ -407,7 +407,7 @@ module compute_tile_dm
          .bus_hold                      (1'b0));                         // Templated
 
    //MAM - WB adapter signals
-   logic          mam_dm_stb_o;
+   (* mark_debug = "true" *) logic          mam_dm_stb_o;
    logic          mam_dm_cyc_o;
    logic          mam_dm_ack_i;
    logic          mam_dm_err_i;

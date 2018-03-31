@@ -199,6 +199,13 @@ module system_2x2_cccc_vcu108
    glip_channel c_glip_in(.clk(sys_clk_50));
    glip_channel c_glip_out(.clk(sys_clk_50));
 
+   (* mark_debug = "true" *) wire [15:0] glip_data;
+   (* mark_debug = "true" *) wire glip_valid, glip_ready;
+   
+   assign glip_data = c_glip_in.data;
+   assign glip_valid = c_glip_in.valid;
+   assign glip_ready = c_glip_in.ready;
+
    // Host (off-chip) interface through GLIP (mostly for debug)
    generate
       if (HOST_IF == "uart") begin
