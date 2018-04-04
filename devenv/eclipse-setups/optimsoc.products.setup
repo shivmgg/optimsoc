@@ -59,15 +59,15 @@
       </detail>
     </annotation>
     <version
-        name="neon"
-        label="Neon"
+        name="oxygen"
+        label="Oxygen"
         requiredJavaVersion="1.8">
       <setupTask
           xsi:type="setup.p2:P2Task"
           label="${scope.product.label} (${scope.product.version.label})"
           licenseConfirmationDisabled="true">
         <repository
-            url="http://download.eclipse.org/releases/neon"/>
+            url="http://download.eclipse.org/releases/oxygen"/>
 
         <!-- base IDE -->
         <requirement
@@ -79,8 +79,7 @@
 
         <!-- C/C++ (CDT and friends) -->
         <requirement
-            name="epp.package.cpp"
-            versionRange="[4.6.0,4.7.0)"/>
+            name="epp.package.cpp"/>
         <requirement
             name="org.eclipse.cdt.autotools.feature.group"/>
         <requirement
@@ -132,7 +131,7 @@
         <repository
             url="http://dadacoalition.org/yedit"/>
       </setupTask>
-      <description>OpTiMSoC Development Environment based on Eclipse Neon</description>
+      <description>OpTiMSoC Development Environment based on Eclipse</description>
     </version>
     <description>An development environment for creating projects with OpTiMSoC and hacking OpTiMSoC itself. Both for hardware and software engineers.</description>
   </product>

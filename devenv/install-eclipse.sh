@@ -3,8 +3,10 @@
 THIS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 TEMPDIR="$(mktemp -d)"
 
+INSTALLER_URL='http://www.eclipse.org/downloads/download.php?file=/oomph/products/eclipse-inst-linux64.tar.gz&r=1'
+
 echo -n 'Downloading Eclipse installer ...'
-wget -q -O$TEMPDIR/eclipse-installer.tar.gz 'http://eclipse.mirror.wearetriple.com//oomph/products/eclipse-inst-linux64.tar.gz'
+curl -Ls -o $TEMPDIR/eclipse-installer.tar.gz "$INSTALLER_URL"
 echo ' done'
 
 echo -n 'Extracting installer ...'
