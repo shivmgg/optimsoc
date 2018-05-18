@@ -1,0 +1,2 @@
+waive -rule "ErrorAnalyzeBBox" -msg "Design Unit 'clk_gen_ddr' has no definition; black-box behavior assumed"
+waive -rule "ErrorAnalyzeBBox" -msg "Design Unit 'mig_7series' has no definition; black-box behavior assumed"
