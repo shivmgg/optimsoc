@@ -42,7 +42,7 @@ module creditor
     output                        error
     );
    
-   reg [WIDTH-1:0]                resources = INITIAL_VALUE;
+   reg [WIDTH-1:0]                resources;
    reg [WIDTH:0]                  nxt_resources;
    reg [CREDIT_WIDTH-1:0]         nxt_credit;
    
